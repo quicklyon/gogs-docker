@@ -37,7 +37,7 @@ RUN . /opt/easysoft/scripts/libcomponent.sh && component_unpack "wait-for-port" 
 RUN . /opt/easysoft/scripts/libcomponent.sh && component_unpack "mysql-client" "10.5.15" -c 31182985daa1a2a959b5197b570961cdaacf3d4e58e59a192c610f8c8f1968a8
 
 # Download gogs
-RUN . /opt/easysoft/scripts/libcomponent.sh && component_unpack "gogs" "${APP_VER}" -c 570fcf47454a05d9bfa66d10bca16bc66638414f83c9b3a4f4bc2abf5bdc16ee
+RUN . /opt/easysoft/scripts/libcomponent.sh && component_unpack "gogs" "${APP_VER}" -c 7397a9e4f60659aff4a7f1a6b9970107da7afe385c9aa8ef668d76c14ea76b94
 
 # Copy apache,php and gogs config files
 COPY debian/rootfs /
