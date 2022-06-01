@@ -1,0 +1,46 @@
+#!/bin/bash
+
+# shellcheck disable=SC1091
+
+set -o errexit
+set -o nounset
+set -o pipefail
+
+[ -n "${DEBUG:+1}" ] && set -x
+
+# Load libraries
+. /opt/easysoft/scripts/liblog.sh
+. /opt/easysoft/scripts/libfs.sh
+. /opt/easysoft/scripts/libmysql.sh
+. /opt/easysoft/scripts/libgit.sh
+
+# Load Apache/PHP/Gogs environment variables
+. /etc/s6/s6-init/envs
+
+#==================================#
+# Prepare persistence directories. #
+#==================================#
+info "Prepare persistence directories."
+for dir in $PERSISTENCE_LIST
+do
+    ensure_dir_exists "$dir" "git" "git"
+done
+
+#=====================#
+#  Prepare git(gogs)  #
+#=====================#
+# If first start,render app.ini,prepare database and crate admin user
+GIT_CFG="/apps/gogs/etc/app.ini"
+
+info "Render gogs config file with envionment variables."
+render-template ${GIT_CFG}.tpl > ${GIT_CFG}
+
+# Check git database and admin user
+wait_for_mysql || exit 1
+
+# db.user tables not exist,import table structure
+if check_table_exists "$MYSQL_DB" "user" ;then
+    mysql_import_to_db "$MYSQL_DB" "/apps/gogs/sql/init-db.sql" || exit 1
+fi
+
+create_admin_user "$GIT_CFG" || exit 1

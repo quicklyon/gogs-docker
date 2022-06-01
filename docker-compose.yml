@@ -1,0 +1,45 @@
+version: '2'
+
+networks:
+  gogs-net:
+    driver: bridge
+
+services:
+# mysql service for gogs
+  gogs-mysql:
+    image: mysql:5.7
+    container_name: gogs-mysql
+    ports:
+      - '3309:3306'
+    volumes:
+      - 'gogs_db:/var/lib/mysql'
+    environment:
+      - MYSQL_ROOT_PASSWORD=pass4Gogs
+      - MYSQL_DATABASE=gogs
+    networks:
+      - gogs-net
+
+# gogs service
+  gogs:
+    image: hub.qucheng.com/app/gogs:${TAG}
+    container_name: gogs
+    ports:
+      - '8083:3000'
+    volumes:
+      - 'gogs_data:/data'
+    environment:
+      - MYSQL_HOST=gogs-mysql
+      - MYSQL_USER=root
+      - MYSQL_PASSWORD=pass4Gogs
+      - MYSQL_DB=gogs
+      - DEBUG=true
+      - EASYSOFT_DEBUG=true
+    networks:
+      - gogs-net
+
+# persistence
+volumes:
+  gogs_data:
+    driver: local
+  gogs_db:
+    driver: local
