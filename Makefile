@@ -1,10 +1,11 @@
 export TAG := $(shell grep ver VERSION | cut -d '=' -f 2)
+export APP_SHA256 := $(shell grep sha256 VERSION | cut -d '=' -f 2)
 
 help: ## this help
 	@awk 'BEGIN {FS = ":.*?## "} /^[a-zA-Z_-]+:.*?## / {sub("\\\\n",sprintf("\n%22c"," "), $$2);printf "\033[36m%-20s\033[0m %s\n", $$1, $$2}' $(MAKEFILE_LIST)
 
 build: ## 构建镜像
-	docker build --build-arg VERSION=$(TAG) -t hub.qucheng.com/app/gogs:$(TAG) -f Dockerfile .
+	docker build --build-arg VERSION=$(TAG) --build-arg APP_SHA256=$(APP_SHA256) -t hub.qucheng.com/app/gogs:$(TAG) -f Dockerfile .
 
 push: ## push 镜像
 	docker push hub.qucheng.com/app/gogs:$(TAG)

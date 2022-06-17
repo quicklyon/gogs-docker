@@ -28,7 +28,7 @@ create_admin_user() {
     if [ "$git_admin_crated" == "0" ];then
         info "Create Git service administrator user."
         su-exec git /apps/gogs/bin/gogs admin create-user \
-        --name "${DEFAULT_ADMIN_USER}" \
+        --name "${DEFAULT_ADMIN_USERNAME}" \
         --password "${DEFAULT_ADMIN_PASSWORD}"  \
         --email "${ADMIN_EMAIL}" \
         --admin \

@@ -21,8 +21,8 @@ RUN sed -i -r 's/(deb|security).debian.org/mirrors.aliyun.com/g' /etc/apt/source
 
 # Install gogs
 ARG VERSION
-ENV APP_VER=${VERSION}
-ENV EASYSOFT_APP_NAME="gogs $APP_VER"
+ARG APP_SHA256
+ENV EASYSOFT_APP_NAME="gogs $VERSION"
 
 # Install render-template
 RUN . /opt/easysoft/scripts/libcomponent.sh && component_unpack "render-template" "1.0.1-10" --checksum 5e410e55497aa79a6a0c5408b69ad4247d31098bdb0853449f96197180ed65a4
@@ -37,7 +37,7 @@ RUN . /opt/easysoft/scripts/libcomponent.sh && component_unpack "wait-for-port" 
 RUN . /opt/easysoft/scripts/libcomponent.sh && component_unpack "mysql-client" "10.5.15" -c 31182985daa1a2a959b5197b570961cdaacf3d4e58e59a192c610f8c8f1968a8
 
 # Download gogs
-RUN . /opt/easysoft/scripts/libcomponent.sh && component_unpack "gogs" "${APP_VER}" -c 7397a9e4f60659aff4a7f1a6b9970107da7afe385c9aa8ef668d76c14ea76b94
+RUN . /opt/easysoft/scripts/libcomponent.sh && component_unpack "gogs" "${VERSION}" -c ${APP_SHA256}
 
 # Copy apache,php and gogs config files
 COPY debian/rootfs /
