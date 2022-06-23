@@ -20,7 +20,7 @@ TEMP_PATH = /data/git/tmp/uploads
 [server]
 DOMAIN           = {{APP_DOMAIN}}
 HTTP_PORT        = 3000
-EXTERNAL_URL     = https://{{APP_DOMAIN}}
+EXTERNAL_URL     = {{APP_PROTOCOL}}://{{APP_DOMAIN}}
 DISABLE_SSH      = true
 SSH_PORT         = 2222
 START_SSH_SERVER = false
