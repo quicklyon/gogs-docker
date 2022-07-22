@@ -9,6 +9,10 @@ build: ## 构建镜像
 
 push: ## push 镜像
 	docker push hub.qucheng.com/app/gogs:$(TAG)
+	docker tag hub.qucheng.com/app/gogs:$(TAG) easysoft/gogs:$(TAG)
+	docker tag easysoft/gogs:$(TAG) easysoft/gogs:latest
+	docker push easysoft/gogs:$(TAG)
+	docker push easysoft/gogs:latest
 
 run: ## 运行喧喧
 	docker-compose -f docker-compose.yml up -d
