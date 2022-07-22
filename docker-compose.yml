@@ -15,7 +15,7 @@ services:
       - 'gogs_db:/var/lib/mysql'
     environment:
       - MYSQL_ROOT_PASSWORD=pass4Gogs
-      - MYSQL_DATABASE=gogs
+      - MYSQL_DATABASE=gogs-test
     networks:
       - gogs-net
 
@@ -31,7 +31,7 @@ services:
       - MYSQL_HOST=gogs-mysql
       - MYSQL_USER=root
       - MYSQL_PASSWORD=pass4Gogs
-      - MYSQL_DB=gogs
+      - MYSQL_DB=gogs-test
       - DEBUG=true
       - EASYSOFT_DEBUG=true
     networks:

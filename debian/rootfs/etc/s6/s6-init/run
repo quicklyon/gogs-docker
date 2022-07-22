@@ -39,7 +39,7 @@ render-template ${GIT_CFG}.tpl > ${GIT_CFG}
 wait_for_mysql || exit 1
 
 # db.user tables not exist,import table structure
-if check_table_exists "$MYSQL_DB" "user" ;then
+if check_table_exists \`"$MYSQL_DB"\` "user" ;then
     mysql_import_to_db "$MYSQL_DB" "/apps/gogs/sql/init-db.sql" || exit 1
 fi
 

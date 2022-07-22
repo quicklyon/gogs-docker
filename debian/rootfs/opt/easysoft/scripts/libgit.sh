@@ -22,7 +22,7 @@ create_admin_user() {
     local mysql_bin="mysql -h${MYSQL_HOST} -u${MYSQL_USER} -p${MYSQL_PASSWORD}"
     
     info "Check whether git admin user exists."
-    git_admin_crated=$($mysql_bin -e "select count(1) from ${MYSQL_DB}.user where is_admin=1;"|sed 1d)
+    git_admin_crated=$($mysql_bin -e "select count(1) from \`${MYSQL_DB}\`.user where is_admin=1;"|sed 1d)
 
     # If admin user doesn't exist,create it
     if [ "$git_admin_crated" == "0" ];then
