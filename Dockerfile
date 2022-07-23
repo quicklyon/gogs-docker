@@ -1,4 +1,4 @@
-FROM hub.qucheng.com/library/debian:11.3-slim
+FROM debian:11.4-slim
 
 LABEL maintainer "zhouyueqiu <zhouyueqiu@easycorp.ltd>"
 
@@ -11,11 +11,7 @@ COPY debian/prebuildfs /
 ENV TZ=Asia/Shanghai \
     DEBIAN_FRONTEND=noninteractive
 
-RUN sed -i -r 's/(deb|security).debian.org/mirrors.aliyun.com/g' /etc/apt/sources.list \
-    && install_packages curl wget tzdata zip unzip s6 pwgen git cron procps libedit2 \
-    && ln -fs /usr/share/zoneinfo/${TZ} /etc/localtime \
-    && echo ${TZ} > /etc/timezone \
-    && dpkg-reconfigure --frontend noninteractive tzdata \
+RUN install_packages curl wget zip unzip s6 pwgen git cron procps libedit2 \
     && groupadd -g 1024 git \
     && useradd -u 1024 -g 1024 -s /usr/sbin/nologin -d /data/git -M git
 

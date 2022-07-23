@@ -1,5 +1,12 @@
 # Gogs Docker镜像
 
+## 快速参考
+
+- 通过 [渠成软件百宝箱](https://www.qucheng.com/app-install/install-gogs-127.html) 一键安装 **Gogs**
+- [Dockerfile 源码](https://github.com/quicklyon/gogs-docker)
+- [Gogs 源码](https://github.com/gogs/gogs)
+- [Gogs 官网](https://gogs.io/)
+
 ## 一、关于Gogs
 
 Gogs 的目标是打造一个最简单、最快速和最轻松的方式搭建自助 Git 服务。使用 Go 语言开发使得 Gogs 能够通过独立的二进制分发，并且支持 Go 语言支持的 所有平台，包括 Linux、Mac OS X、Windows 以及 ARM 平台。
@@ -31,23 +38,23 @@ Gogs官网：[gogs.io](https://gogs.io/)
   - [github.com/denisenkom/go-mssqldb](https://github.com/denisenkom/go-mssqldb)
 - 以及其它所有 Go 语言的第三方包依赖。
 
-## 二、支持的标签
+## 二、支持的版本(Tag)
 
+- [`latest`](https://github.com/gogs/gogs/releases) [0.12.9](https://github.com/gogs/gogs/releases/tag/v0.12.9)
 - [0.12.8](https://github.com/gogs/gogs/releases/tag/v0.12.8)
-- [0.12.9](https://github.com/gogs/gogs/releases/tag/v0.12.9)
 
 ## 三、获取镜像
 
 推荐从 [Docker Hub Registry](https://hub.docker.com/r/easysoft/gogs) 拉取我们构建好的官方Docker镜像【目前提供国内加速镜像地址】
 
 ```bash
-docker pull hub.qucheng.com/app/gogs:0.12.9
+docker pull easysoft/gogs:latest
 ```
 
 如需使用指定的版本，可以拉取一个包含版本标签的镜像，在Docker Hub仓库中查看 [可用版本列表](https://hub.docker.com/r/easysoft/gogs/tags/)
 
 ```bash
-docker pull hub.qucheng.com/app/gogs:[TAG]
+docker pull easysoft/gogs:[TAG]
 ```
 
 ## 四、持久化数据
@@ -63,7 +70,7 @@ docker pull hub.qucheng.com/app/gogs:[TAG]
 ```bash
 $ docker run -it \
     -v $PWD/data:/data \
-docker pull hub.qucheng.com/app/gogs.0.12.9
+docker pull easysoft/gogs:latest
 ```
 
 或者修改 docker-compose.yml 文件，添加持久化目录配置
