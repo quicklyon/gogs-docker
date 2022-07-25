@@ -1,0 +1,12 @@
+{
+    "Name": "Gogs",
+    "Home": "https://gogs.io",
+    "GitUrl": "https://github.com/gogs/gogs",
+    "DockerfileUrl": "https://github.com/quicklyon/gogs-docker",
+    "InstallDocUrl": "https://www.qucheng.com/app-install/install-gogs-127.html",
+    "Docker": {
+        "Name": "gogs",
+        "Repo": "https://hub.docker.com/r/easysoft/gogs",
+        "TagUrl": "https://hub.docker.com/r/easysoft/gogs/tags/"
+    }
+}

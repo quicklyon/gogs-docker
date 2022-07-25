@@ -11,19 +11,19 @@ repack() {
   local ver=${1:?version is error.}
   local base_name="gogs_${ver}_linux_amd64.tar.gz"
 
-  [ ! -d /tmp/$ver ] && mkdir /tmp/$ver -pv
+  [ ! -d /tmp/"$ver" ] && mkdir /tmp/"$ver" -pv
 
-  wget -O /tmp/${ver}/${base_name} https://dl.gogs.io/$ver/$base_name \
-  && cd /tmp/$ver \
-  && tar xvzf $base_name \
+  wget -O /tmp/"$ver"/"$base_name" https://dl.gogs.io/"$ver"/"$base_name" \
+  && cd /tmp/"$ver" \
+  && tar xvzf "$base_name" \
   && mkdir -pv apps/gogs/bin \
   && mv gogs/gogs apps/gogs/bin/ \
   && upx -9 apps/gogs/bin/gogs \
-  && tar czvf gogs-$ver-debian-11-amd64.tar.gz apps \
+  && tar czvf gogs-"$ver"-debian-11-amd64.tar.gz apps \
   && upload_to_cos "gogs-$ver-debian-11-amd64.tar.gz" \
-  && echo "sha=$(cat gogs-$ver-debian-11-amd64.tar.gz.sha256)" >> VERSION \
+  && echo "sha=$(cat gogs-"$ver"-debian-11-amd64.tar.gz.sha256)" >> VERSION \
   && cd ../ \
-  && rm -rf $ver
+  && rm -rf "$ver"
 }
 
 upload_to_cos() {
@@ -37,23 +37,25 @@ upload_to_cos() {
   else
     # create sha256sum file
     echo "Create sha256 file: $sha_file"
-    sha256sum $filename > $sha_file
+    sha256sum "$filename" > "$sha_file"
 
     echo "Upload $filename..."
-    coscli cp $filename ${COS_PATH}/${filename}
+    coscli cp "$filename" ${COS_PATH}/"$filename"
 
     echo "Upload $sha_file..."
-    coscli cp $sha_file ${COS_PATH}/${sha_file}
+    coscli cp "$sha_file" ${COS_PATH}/"$sha_file"
   fi
 
 }
 
 
+#============= Main ===================
 
 if [ "$LATEST_VER" != "$CURRENT_VER" ];then
   echo "ver=${LATEST_VER}" > VERSION
-  echo "New version was detected. repack gogs and rebuild docker image."
-  repack $LATEST_VER
+  echo "New version was detected. repack gogs."
+  repack "$LATEST_VER"
+  echo "Please rebuild docker image."
 else
   echo "$CURRENT_VER is the latest version."
 fi
