@@ -19,7 +19,7 @@ docker-push: ## push 镜像到 hub.docker.com
 	docker push easysoft/gogs:latest
 
 run: ## 运行
-	docker-compose -f docker-compose.yml up -d
+	export TAG=$(TAG)-$(BUILD_DATE);docker-compose -f docker-compose.yml up -d
 
 ps: ## 运行状态
 	docker-compose -f docker-compose.yml ps

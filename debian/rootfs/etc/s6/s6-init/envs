@@ -21,6 +21,8 @@ export GIT_FORCE_PRIVATE=${GIT_FORCE_PRIVATE:-false}    # User-defined
 #=======================#
 export PERSISTENCE_LIST="
 /data/git
+/data/git/data
+/data/git/data/tmp
 /data/git/data/attachments
 /data/git/repositories
 /data/git/tmp/uploads
