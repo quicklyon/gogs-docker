@@ -1,5 +1,12 @@
 # QuickOn {{APP_NAME}} 应用镜像
 
+![GitHub Workflow Status (event)](https://img.shields.io/github/workflow/status/quicklyon/{{app_name}}-docker/build?style=flat-square)
+![Docker Pulls](https://img.shields.io/docker/pulls/easysoft/{{app_name}}?style=flat-square)
+![Docker Image Size](https://img.shields.io/docker/image-size/easysoft/{{app_name}}?style=flat-square)
+![GitHub tag](https://img.shields.io/github/v/tag/quicklyon/{{app_name}}-docker?style=flat-square)
+
+> 申明: 该软件镜像是由QuickOn打包。在发行中提及的各自商标由各自的公司或个人所有，使用它们并不意味着任何从属关系。
+
 ## 快速参考
 
 - 通过 [渠成软件百宝箱]({{APP_INSTALL_DOC_URL}}) 一键安装 **{{APP_NAME}}**
@@ -59,7 +66,7 @@ services:
   {{APP_NAME}}:
   ...
     volumes:
-      - /path/to/gogs-persistence:/data
+      - /path/to/persistence:/data
   ...
 ```
 
@@ -83,3 +90,5 @@ docker-compose logs -f gogs
 
 ```
 {{MAKE_EXTRA_INFO}}
+- [VERSION]({{APP_DOCKERFILE_GIT_URL}}/blob/main/VERSION) 文件中详细的定义了Makefile可以操作的版本。
+- [docker-compose.yml]({{APP_DOCKERFILE_GIT_URL}}/blob/main/docker-compose.yml)。

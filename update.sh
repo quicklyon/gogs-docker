@@ -2,10 +2,10 @@
 
 set -Eeuo pipefail
 
-COS_PATH="cos://pkg-1308438674/files/stacksmith"
+COS_PATH="cos://mirror-pkg-1308438674/files/stacksmith"
 REPO_URL="https://api.github.com/repos/gogs/gogs/releases/latest"
 LATEST_VER=$( curl -s -L $REPO_URL | jq -r .tag_name | sed 's/^v//')
-CURRENT_VER=$( grep ^ver VERSION |cut -d = -f 2 )
+CURRENT_VER=$( cat VERSION )
 
 repack() {
   local ver=${1:?version is error.}
@@ -13,7 +13,7 @@ repack() {
 
   [ ! -d /tmp/"$ver" ] && mkdir /tmp/"$ver" -pv
 
-  wget -O /tmp/"$ver"/"$base_name" https://dl.gogs.io/"$ver"/"$base_name" \
+  wget -O /tmp/"$ver"/"$base_name" https://github.com/gogs/gogs/releases/download/v"$ver"/"$base_name" \
   && cd /tmp/"$ver" \
   && tar xvzf "$base_name" \
   && mkdir -pv apps/gogs/bin \
@@ -21,7 +21,6 @@ repack() {
   && upx -9 apps/gogs/bin/gogs \
   && tar czvf gogs-"$ver"-debian-11-amd64.tar.gz apps \
   && upload_to_cos "gogs-$ver-debian-11-amd64.tar.gz" \
-  && echo "sha=$(cat gogs-"$ver"-debian-11-amd64.tar.gz.sha256)" >> VERSION \
   && cd ../ \
   && rm -rf "$ver"
 }
@@ -52,7 +51,7 @@ upload_to_cos() {
 #============= Main ===================
 
 if [ "$LATEST_VER" != "$CURRENT_VER" ];then
-  echo "ver=${LATEST_VER}" > VERSION
+  echo "${LATEST_VER}" > VERSION
   echo "New version was detected. repack gogs."
   repack "$LATEST_VER"
   echo "Please rebuild docker image."

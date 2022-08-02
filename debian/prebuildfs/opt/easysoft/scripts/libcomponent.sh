@@ -6,7 +6,7 @@
 
 # Constants
 CACHE_ROOT="/tmp/easysoft/pkg/cache"
-DOWNLOAD_URL="https://pkg.qucheng.com/files/stacksmith"
+DOWNLOAD_URL="https://pkg-hk.qucheng.com/files/stacksmith"
 ZENTAO_URL="https://www.zentao.net/dl/zentao"
 ZDOO_URL="https://www.zdoo.com/dl/zdoo"
 XUANXUAN_URL="https://dl.cnezsoft.com/xuanxuan"
@@ -75,8 +75,8 @@ component_unpack() {
     local name="${1:?name is required}"
     local version="${2:?version is required}"
     local base_name="${name}-${version}-${OS_NAME}-${OS_ARCH}"
-    local package_sha256=""
     local directory="/"
+    package_sha256="$(curl -k -s -L $DOWNLOAD_URL/"${name}"-"${version}"-"${OS_NAME}"-"${OS_ARCH}".tar.gz.sha256 | awk '{print $1}')"
 
     # Validate arguments
     shift 2
@@ -95,18 +95,9 @@ component_unpack() {
     done
 
     echo "Downloading $base_name package"
-    if [ -f "${CACHE_ROOT}/${base_name}.tar.gz" ]; then
-        echo "${CACHE_ROOT}/${base_name}.tar.gz already exists, skipping download."
-        cp "${CACHE_ROOT}/${base_name}.tar.gz" .
-        rm "${CACHE_ROOT}/${base_name}.tar.gz"
-        if [ -f "${CACHE_ROOT}/${base_name}.tar.gz.sha256" ]; then
-            echo "Using the local sha256 from ${CACHE_ROOT}/${base_name}.tar.gz.sha256"
-            package_sha256="$(< "${CACHE_ROOT}/${base_name}.tar.gz.sha256")"
-            rm "${CACHE_ROOT}/${base_name}.tar.gz.sha256"
-        fi
-    else
+
 	curl -k --remote-name --silent --show-error --fail "${DOWNLOAD_URL}/${base_name}.tar.gz"
-    fi
+
     if [ -n "$package_sha256" ]; then
         echo "Verifying package integrity"
         echo "$package_sha256  ${base_name}.tar.gz" | sha256sum -c - || exit "$?"
