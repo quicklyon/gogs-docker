@@ -1,17 +1,27 @@
 # QuickOn Gogs 应用镜像
 
+![GitHub Workflow Status (event)](https://img.shields.io/github/workflow/status/quicklyon/gogs-docker/build?style=flat-square)
+![Docker Pulls](https://img.shields.io/docker/pulls/easysoft/gogs?style=flat-square)
+![Docker Image Size](https://img.shields.io/docker/image-size/easysoft/gogs?style=flat-square)
+![GitHub tag](https://img.shields.io/github/v/tag/quicklyon/gogs-docker?style=flat-square)
+
+> 申明: 该软件镜像是由QuickOn打包。在发行中提及的各自商标由各自的公司或个人所有，使用它们并不意味着任何从属关系。
+
 ## 快速参考
 
 - 通过 [渠成软件百宝箱](https://www.qucheng.com/app-install/install-gogs-127.html) 一键安装 **Gogs**
 - [Dockerfile 源码](https://github.com/quicklyon/gogs-docker)
 - [Gogs 源码](https://github.com/gogs/gogs)
-- [Gogs 官网](https://gogs.io/)
+- [Gogs 官网](https://gogs.io)
 
-## 一、关于Gogs
+## 一、关于 Gogs
 
 Gogs 的目标是打造一个最简单、最快速和最轻松的方式搭建自助 Git 服务。使用 Go 语言开发使得 Gogs 能够通过独立的二进制分发，并且支持 Go 语言支持的 所有平台，包括 Linux、Mac OS X、Windows 以及 ARM 平台。
 
-Gogs官网：[gogs.io](https://gogs.io/)
+![screenshots](https://raw.githubusercontent.com/quicklyon/gogs-docker/master/.template/screenshot.png)
+
+Gogs官网：[https://gogs.io](https://gogs.io)
+
 
 ### 1.1 开源组件
 
@@ -40,12 +50,15 @@ Gogs官网：[gogs.io](https://gogs.io/)
 
 ## 二、支持的版本(Tag)
 
-- [`latest`](https://github.com/gogs/gogs/releases) [0.12.9](https://github.com/gogs/gogs/releases/tag/v0.12.9)
+由于版本比较多,这里只列出最新的5个版本,更详细的版本列表请参考:[可用版本列表](https://hub.docker.com/r/easysoft/gogs/tags/)
+
+- [`latest`](https://github.com/gogs/gogs/releases)
+- [0.12.9](https://github.com/gogs/gogs/releases/tag/v0.12.9)
 - [0.12.8](https://github.com/gogs/gogs/releases/tag/v0.12.8)
 
 ## 三、获取镜像
 
-推荐从 [Docker Hub Registry](https://hub.docker.com/r/easysoft/gogs) 拉取我们构建好的官方Docker镜像【目前提供国内加速镜像地址】
+推荐从 [Docker Hub Registry](https://hub.docker.com/r/easysoft/gogs) 拉取我们构建好的官方Docker镜像。
 
 ```bash
 docker pull easysoft/gogs:latest
@@ -77,10 +90,10 @@ docker pull easysoft/gogs:latest
 
 ```bash
 services:
-  gogs:
+  Gogs:
   ...
     volumes:
-      - /path/to/gogs-persistence:/data
+      - /path/to/persistence:/data
   ...
 ```
 
@@ -116,8 +129,9 @@ make ps
 docker-compose logs -f gogs
 
 ```
-
 > **说明：**
 >
 > - 启动成功后，打开浏览器输入 `http://<你的IP>:8083` 访问管理后台
 > - 默认用户名：`git-admin`，默认密码：`pass4Git`
+- [VERSION](https://github.com/quicklyon/gogs-docker/blob/main/VERSION) 文件中详细的定义了Makefile可以操作的版本。
+- [docker-compose.yml](https://github.com/quicklyon/gogs-docker/blob/main/docker-compose.yml)。
