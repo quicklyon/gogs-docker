@@ -62,7 +62,7 @@ check_table_exists() {
     local mysql_bin="mysql -h${MYSQL_HOST} -u${MYSQL_USER} -p${MYSQL_PASSWORD}"
 
     info "Check whether the ${db_name}.${table_name} table exists."
-    table_created=$($mysql_bin -e "select count(1) from information_schema.tables WHERE table_schema='${db_name}' and table_name='${table_name}';"|sed 1d)
+    table_created=$($mysql_bin -e "select count(1) from information_schema.tables WHERE table_schema=\"${db_name}\" and table_name=\"${table_name}\";"|sed 1d)
     return "$table_created"
 }
 
