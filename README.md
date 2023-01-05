@@ -52,7 +52,10 @@ Gogs官网：[https://gogs.io](https://gogs.io)
 
 由于版本比较多,这里只列出最新的5个版本,更详细的版本列表请参考:[可用版本列表](https://hub.docker.com/r/easysoft/gogs/tags/)
 
-
+- [`latest`](https://github.com/gogs/gogs/releases)
+- [0.12.10](https://github.com/gogs/gogs/releases/tag/v0.12.10)
+- [0.12.9](https://github.com/gogs/gogs/releases/tag/v0.12.9)
+- [0.12.8](https://github.com/gogs/gogs/releases/tag/v0.12.8)
 
 ## 三、获取镜像
 
@@ -107,6 +110,15 @@ services:
 | MYSQL_DB               | gogs              | Gogs数据库名称            |
 | MYSQL_USER             | root              | MySQL用户名              |
 | MYSQL_PASSWORD         | pass4Gogs         | MySQL密码                |
+| MAIL_ENABLED           | false             | 是否启动邮件配置                |
+| SMTP_SUBJECT_PREFIX    | [Gogs]            | 邮件主题前缀            |
+| SMTP_HOST              | localhost         | 邮件服务器地址            |
+| SMTP_PORT              | 25                | 邮件服务器端口            |
+| SMTP_USER              | admin@localhost   | 发件人邮箱地址            |
+| SMTP_PASS              | NULL              | 发件人密码            |
+| SMTP_FROMNAME          | Gogs              | 发件人显示信息           |
+| MAIL_DISABLE_HELO      | false             | 是否禁止发送HELO指令     |
+| MAIL_HELO_HOST         | SMTP_HOST         | 发送HELO的主机地址     |
 | DEFAULT_ADMIN_USERNAME | git-admin         | Gogs默认管理员用户名       |
 | DEFAULT_ADMIN_PASSWORD | pass4Git          | Gogs默认管理员密码         |
 | ADMIN_EMAIL            | demo@chandao.net  | Gogs管理员邮箱            |
