@@ -8,6 +8,15 @@
 | MYSQL_DB               | gogs              | Gogs数据库名称            |
 | MYSQL_USER             | root              | MySQL用户名              |
 | MYSQL_PASSWORD         | pass4Gogs         | MySQL密码                |
+| MAIL_ENABLED           | false             | 是否启动邮件配置                |
+| SMTP_SUBJECT_PREFIX    | [Gogs]            | 邮件主题前缀            |
+| SMTP_HOST              | localhost         | 邮件服务器地址            |
+| SMTP_PORT              | 25                | 邮件服务器端口            |
+| SMTP_USER              | admin@localhost   | 发件人邮箱地址            |
+| SMTP_PASS              | NULL              | 发件人密码            |
+| SMTP_FROMNAME          | Gogs              | 发件人显示信息           |
+| MAIL_DISABLE_HELO      | false             | 是否禁止发送HELO指令     |
+| MAIL_HELO_HOST         | SMTP_HOST         | 发送HELO的主机地址     |
 | DEFAULT_ADMIN_USERNAME | git-admin         | Gogs默认管理员用户名       |
 | DEFAULT_ADMIN_PASSWORD | pass4Git          | Gogs默认管理员密码         |
 | ADMIN_EMAIL            | demo@chandao.net  | Gogs管理员邮箱            |

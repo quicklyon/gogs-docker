@@ -52,10 +52,7 @@ Gogs官网：[https://gogs.io](https://gogs.io)
 
 由于版本比较多,这里只列出最新的5个版本,更详细的版本列表请参考:[可用版本列表](https://hub.docker.com/r/easysoft/gogs/tags/)
 
-- [`latest`](https://github.com/gogs/gogs/releases)
-- [0.12.10](https://github.com/gogs/gogs/releases/tag/v0.12.10)
-- [0.12.9](https://github.com/gogs/gogs/releases/tag/v0.12.9)
-- [0.12.8](https://github.com/gogs/gogs/releases/tag/v0.12.8)
+
 
 ## 三、获取镜像
 
