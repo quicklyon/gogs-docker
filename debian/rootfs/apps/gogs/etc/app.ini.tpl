@@ -32,8 +32,17 @@ APP_DATA_PATH    = /data/git/data
 CERT_FILE 	 = /data/git/https/cert.pem
 KEY_FILE 	 = /data/git/https/key.pem
 
-[mailer]
-ENABLED = false
+[email]
+ENABLED = {{MAIL_ENABLED}}
+SUBJECT_PREFIX = `{{SMTP_SUBJECT_PREFIX}} `
+HOST = {{SMTP_HOST}}:{{SMTP_PORT}}
+FROM = `"{{SMTP_FROMNAME}}" <{{SMTP_USER}}>`
+USER = {{SMTP_USER}}
+PASSWORD = {{SMTP_PASS}}
+
+DISABLE_HELO = {{MAIL_DISABLE_HELO}}
+HELO_HOSTNAME = {{MAIL_HELO_HOST}}
+SKIP_VERIFY = true
 
 [service]
 REGISTER_EMAIL_CONFIRM = false
