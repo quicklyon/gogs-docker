@@ -6,7 +6,7 @@ on:
 
 jobs:
   build:
-    name: build docker image
+    name: build gogs image
     runs-on: ubuntu-latest
     steps:
     - name: CheckOut
@@ -20,16 +20,15 @@ jobs:
       with:
         username: ${{ secrets.DOCKER_USER }}
         password: ${{ secrets.DOCKER_PASS }}
-    - name: Login TCR
-      uses: docker/login-action@v2
-      with:
-        registry: hub.qucheng.com
-        username: ${{ secrets.TCR_USER }}
-        password: ${{ secrets.TCR_PASS }}
+    - name: install jq
+      run: |
+        echo "install jq"
+        sudo apt-get update -qq
+        sudo apt-get install -y jq
     - name: Build and push
       run: |
         make build-public
-        make push-sync-tcr
+        make push-public
     - name: Update repo description
       uses: peter-evans/dockerhub-description@v3
       with:
