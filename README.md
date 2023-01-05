@@ -1,6 +1,6 @@
 # QuickOn Gogs 应用镜像
 
-![GitHub Workflow Status (event)](https://img.shields.io/github/actions/workflow/status/quicklyon/gogs-docker/gogs.yml?style=flat-square)
+![GitHub Workflow Status (event)](https://img.shields.io/github/actions/workflow/status/quicklyon/gogs-docker/docker.yml?style=flat-square)
 ![Docker Pulls](https://img.shields.io/docker/pulls/easysoft/gogs?style=flat-square)
 ![Docker Image Size](https://img.shields.io/docker/image-size/easysoft/gogs?style=flat-square)
 ![GitHub tag](https://img.shields.io/github/v/tag/quicklyon/gogs-docker?style=flat-square)
