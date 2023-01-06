@@ -18,7 +18,7 @@ set -o pipefail
 print_welcome_page
 
 # Enable apache
-make_soft_link "/etc/s6/s6-available/git" "/etc/s6/s6-enable/01-git" "root"
+[ ! -L /etc/s6/s6-enable/01-git ] && ln -s /etc/s6/s6-available/git /etc/s6/s6-enable/01-git
 
 
 if [ $# -gt 0 ]; then
