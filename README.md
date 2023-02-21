@@ -1,6 +1,6 @@
 # QuickOn Gogs 应用镜像
 
-![GitHub Workflow Status (event)](https://img.shields.io/github/actions/workflow/status/quicklyon/gogs-docker/docker.yml?style=flat-square)
+![GitHub Workflow Status (event)](https://img.shields.io/github/workflow/status/quicklyon/gogs-docker/build?style=flat-square)
 ![Docker Pulls](https://img.shields.io/docker/pulls/easysoft/gogs?style=flat-square)
 ![Docker Image Size](https://img.shields.io/docker/image-size/easysoft/gogs?style=flat-square)
 ![GitHub tag](https://img.shields.io/github/v/tag/quicklyon/gogs-docker?style=flat-square)
@@ -53,7 +53,7 @@ Gogs官网：[https://gogs.io](https://gogs.io)
 由于版本比较多,这里只列出最新的5个版本,更详细的版本列表请参考:[可用版本列表](https://hub.docker.com/r/easysoft/gogs/tags/)
 
 - [`latest`](https://github.com/gogs/gogs/releases)
-- [0.12.10](https://github.com/gogs/gogs/releases/tag/v0.12.10)
+- [0.12.10-20230221](https://github.com/gogs/gogs/releases/tag/v0.12.10)
 - [0.12.9](https://github.com/gogs/gogs/releases/tag/v0.12.9)
 - [0.12.8](https://github.com/gogs/gogs/releases/tag/v0.12.8)
 
