@@ -17,7 +17,9 @@ set -o pipefail
 
 print_welcome_page
 
-# Enable apache
+# Enable gogs
+ensure_dir_exists "/etc/s6/s6-enable"
+
 [ ! -L /etc/s6/s6-enable/01-git ] && ln -s /etc/s6/s6-available/git /etc/s6/s6-enable/01-git
 
 
