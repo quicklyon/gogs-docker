@@ -24,10 +24,11 @@ services:
     image: hub.qucheng.com/app/gogs:${TAG:-latest}
     container_name: gogs
     ports:
-      - '8083:3000'
+      - '3000:3000'
     volumes:
       - 'gogs_data:/data'
     environment:
+      - APP_DOMAIN=demo.gogs.com
       - MYSQL_HOST=gogs-mysql
       - MYSQL_USER=root
       - MYSQL_PASSWORD=pass4Gogs

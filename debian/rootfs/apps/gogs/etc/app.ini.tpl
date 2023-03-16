@@ -12,7 +12,8 @@ PATH     = /data/git/gogs.db
 
 [repository]
 ROOT = /data/git/repositories
-FORCE_PRIVATE = {{GIT_FORCE_PRIVATE}}
+DEFAULT_BRANCH = master
+FORCE_PRIVATE  = {{GIT_FORCE_PRIVATE}}
 
 [repository.upload]
 TEMP_PATH = /data/git/tmp/uploads
@@ -20,6 +21,7 @@ TEMP_PATH = /data/git/tmp/uploads
 [server]
 DOMAIN           = {{APP_DOMAIN}}
 HTTP_PORT        = 3000
+PROTOCOL         = {{APP_PROTOCOL}}
 EXTERNAL_URL     = {{APP_PROTOCOL}}://{{APP_DOMAIN}}
 DISABLE_SSH      = true
 SSH_PORT         = 2222
@@ -44,12 +46,14 @@ DISABLE_HELO = {{MAIL_DISABLE_HELO}}
 HELO_HOSTNAME = {{MAIL_HELO_HOST}}
 SKIP_VERIFY = true
 
-[service]
-REGISTER_EMAIL_CONFIRM = false
-ENABLE_NOTIFY_MAIL     = false
-DISABLE_REGISTRATION   = true
-ENABLE_CAPTCHA         = false
-REQUIRE_SIGNIN_VIEW    = true
+[user]
+ENABLE_EMAIL_NOTIFICATION = false
+
+[auth]
+REQUIRE_SIGNIN_VIEW         = true
+DISABLE_REGISTRATION        = false
+REQUIRE_EMAIL_CONFIRMATION  = false
+ENABLE_REGISTRATION_CAPTCHA = false
 
 [picture]
 AVATAR_UPLOAD_PATH 		= /data/git/avatars
@@ -64,7 +68,7 @@ PROVIDER_CONFIG = /data/git/sessions
 
 
 [log]
-MODE      = console, file
+MODE      = console,file
 LEVEL     = Info
 ROOT_PATH = /data/git/log
 

@@ -1,4 +1,5 @@
 - [`latest`](https://github.com/gogs/gogs/releases)
+- [0.13.0-20230316](https://github.com/gogs/gogs/releases/tag/v0.13.0)
 - [0.12.10-20230221](https://github.com/gogs/gogs/releases/tag/v0.12.10)
 - [0.12.9](https://github.com/gogs/gogs/releases/tag/v0.12.9)
 - [0.12.8](https://github.com/gogs/gogs/releases/tag/v0.12.8)
