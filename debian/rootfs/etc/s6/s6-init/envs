@@ -4,11 +4,11 @@
 #  Git(gogs)     #
 #================#
 export APP_DOMAIN=${APP_DOMAIN:-git.demo.com}           # User-defined
-export APP_PROTOCOL=${PROTOCOL:-http}
+export APP_PROTOCOL=${APP_PROTOCOL:-http}
 export MYSQL_HOST=${MYSQL_HOST:-"127.0.0.1"}
-export MYSQL_PORT=${MYSQL_PORT:-"3306"} 
-export MYSQL_DB=${MYSQL_DB:-"gogs"} 
-export MYSQL_USER=${MYSQL_USER:-"root"} 
+export MYSQL_PORT=${MYSQL_PORT:-"3306"}
+export MYSQL_DB=${MYSQL_DB:-"gogs"}
+export MYSQL_USER=${MYSQL_USER:-"root"}
 export MYSQL_PASSWORD=${MYSQL_PASSWORD:-"pass4Gogs"}
 export MAIL_ENABLED=${MAIL_ENABLED:-"false"}
 export SMTP_SUBJECT_PREFIX=${SMTP_SUBJECT_PREFIX:-"[Gogs]"}
